@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>21</title>
 </head>
 <body>
     <header>
-        <h1>21 Backjack</h1>
+        <h1>21 Blackjack</h1>
     </header>
     <main>
         <div id="divBtns">
@@ -15,13 +16,15 @@
             <button id="btnStop">Stop</button>
             <button id="btnNew">New</button>
         </div>
-        <div class="">
-            <div class="">
+        <div class="hand">
+            <div class="groupHand">
                 <h2>Dealer's Hand</h2>
+                <small id="dealerPoints">0</small>
                 <div id="cardsDealer"></div>
             </div>
-            <div class="">
+            <div class="groupHand">
                 <h2>Player's Hand</h2>
+                <small id="playerPoints">0</small>
                 <div id="cardsPlayer"></div>
             </div>
         </div>
@@ -30,7 +33,7 @@
         <p>By OrneM</p>
     </footer>
 
-    <script src="underscore-min.js"></script>
-    <script src="index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.4/underscore-min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -11,12 +11,14 @@ const btnNew  = document.getElementById('btnNew');
 const cardsDealer = document.getElementById('cardsDealer');
 const cardsPlayer = document.getElementById('cardsPlayer');
 
-const pointsHTML  = document.querySelectorAll('small');
+const pointsHTML  = [
+    document.getElementById('playerPoints'),
+    document.getElementById('dealerPoints')
+];
 
 const createDeck = () => {
     for (let i = 2; i <= 10; i++) {
         for (let t of ts) {
-            // deck.push(i + 'C');
             deck.push(i + t);
         }
     }
@@ -33,7 +35,7 @@ createDeck();
 
 const takeCard = () => {
     if (deck.length === 0) {
-        throw new Error("There are not cards.");
+        throw new Error("There are no cards.");
     }
     const card = deck.pop();
     return card;
@@ -45,7 +47,7 @@ const valueCard = (card) => {
     if(isNaN(valueCard)) {
         points = (valueCard === 'A') ? 11 : 10;
     } else {
-        points = valueCard + 1;
+        points = parseInt(valueCard);
     }
     return points;
 }
@@ -57,10 +59,12 @@ const spinDealer = (minPoints) => {
         pointsDealer += valueCard(card);
         pointsHTML[1].innerHTML = pointsDealer;
 
-        const imgCard = document.createElement('img');
-        imgCard.src = `img/${card}.png`;
-        imgCard.classList.add('card');
-        cardsDealer.append(imgCard);
+        const imgCard = document.createElement('div');
+        imgCard.className = 'card';
+        const paragraph = document.createElement('p');
+        paragraph.textContent = `${card}`;
+        imgCard.appendChild(paragraph);
+        cardsDealer.append(imgCard); // Agrega al dealer, no al jugador
 
         if(minPoints > 21) {
             break;
@@ -72,13 +76,13 @@ const spinDealer = (minPoints) => {
 
     setTimeout(() => {
         if(pointsDealer === minPoints) {
-            alert('Noone win :(');
+            alert('No one wins :(');
         } else if (minPoints > 21) {
-            alert('Dealer win :(');
+            alert('Dealer wins :(');
         } else if (pointsDealer > 21) {
-            alert('Player win!');
+            alert('Player wins!');
         } else {
-            alert('Dealer win :(');
+            alert('Dealer wins :(');
         }
     }, 100);
 }
@@ -86,12 +90,14 @@ const spinDealer = (minPoints) => {
 btnTake.addEventListener('click', () => {
     const card = takeCard();
 
-    pointsPlayer =+ valueCard(card);
+    pointsPlayer += valueCard(card);
     pointsHTML[0].innerHTML = pointsPlayer;
 
-    const imgCard = document.createElement('img');
-    imgCard.src = `img/${card}.png`;
-    imgCard.classList.add('card');
+    const imgCard = document.createElement('div');
+    imgCard.className = 'card';
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `${card}`;
+    imgCard.appendChild(paragraph);
     cardsPlayer.append(imgCard);
 
     if(pointsPlayer > 21 || pointsPlayer === 21) {
@@ -108,7 +114,6 @@ btnStop.addEventListener('click', () => {
 });
 
 btnNew.addEventListener('click', () => {
-    deck = [];
     deck = createDeck();
 
     pointsDealer = 0;
@@ -120,6 +125,6 @@ btnNew.addEventListener('click', () => {
     cardsDealer.innerHTML = '';
     cardsPlayer.innerHTML = '';
 
-    btnTake.disabled = true;
-    btnStop.disabled = true;
+    btnTake.disabled = false;
+    btnStop.disabled = false;
 });

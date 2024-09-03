@@ -1,0 +1,61 @@
+* {
+    background-color: #0d220d;
+    color: #fff;
+    font-size: x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: xx-large;
+}
+
+button {
+    width: max-content;
+    height: 2rem;
+    background-color: #a7d6fd;
+    color: #000;
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.card {
+    width: 3rem;
+    height: 4rem;
+    color: #000;
+    background-color: #e0c3f3;
+    border: #f8de9b solid 2px;
+    margin: 1rem 1.5rem;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.card p {
+    background-color: #e0c3f3;
+    color: #000;
+    text-align: center;
+    justify-items: center;
+}
+
+#cardsPlayer,
+#cardsDealer {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+footer p {
+    font-size: medium;
+}
+
+/* main,
+footer {
+    text-align: center;
+} */
